@@ -20,6 +20,9 @@ We recomend using a virtual envorinment:
 	virtualenv venv
 	source venv/bin/activate
 	pip install -r requirements.txt
+	
+	#Postgre library
+	pip install psycopg2
 
 	
 ### Tipical Steps
