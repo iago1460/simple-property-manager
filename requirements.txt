@@ -1,0 +1,6 @@
+Django
+django-leaflet
+django-geojson
+django-forms-bootstrap
+pillow
+psycopg2

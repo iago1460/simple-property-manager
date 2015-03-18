@@ -1,0 +1,53 @@
+{% extends "property_manager/base.html" %}
+{% load staticfiles i18n %}
+{% load bootstrap_tags %}
+{% load leaflet_tags %}
+
+
+{% block head %}
+{{ block.super }}
+   {% leaflet_js plugins="forms" %}
+   {% leaflet_css plugins="forms" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+{% if error %}
+	<div class="alert alert-danger">Wrong Username and password combination.</div>
+{% endif %}
+
+<form method="post">
+{% csrf_token %}
+
+	<section id="portfolio" class="portfolio">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					{{ form|as_bootstrap }}
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>	
+
+	<!-- Call to Action -->
+	<aside class="call-to-action bg-primary">
+		<div class="container">
+		    <div class="row">
+		        <div class="col-lg-12 text-center">
+		            <h3>What do you like to do?</h3>
+		            <div class="form-actions">
+					  <button type="submit" class="btn btn-lg btn-light">Login!</button>
+					</div>
+		            
+		        </div>
+		    </div>
+		</div>
+	</aside>
+    
+</form>
+
+{% endblock %}

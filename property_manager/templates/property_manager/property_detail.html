@@ -1,0 +1,79 @@
+{% extends "property_manager/base.html" %}
+{% load staticfiles i18n %}
+{% load bootstrap_tags %}
+{% load leaflet_tags %}
+
+{% block site_heading %}{% trans "Add user" %}{% endblock %}
+
+{% block head %}
+{{ block.super }}
+   {% leaflet_js plugins="forms" %}
+   {% leaflet_css plugins="forms" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2>Property detail</h2> <a href="{% url 'edit_property' property.pk %}"><i class="fa fa-pencil fa-fw fa-3x"></i></a>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+
+
+<div class="container">
+	<div class="media">
+			<div class="col-xs-6 col-md-3">
+				<a class="thumbnail">
+				<img class="media-object" src="{{ property.photo.url }}" >
+				</a>
+			</div>
+			<div class="media-body">
+				<h3 class="media-heading">{{ property }}</h3>
+				<p>
+					{{ property.description|safe }}
+				</p>
+			</div>
+	</div>
+</div>
+
+
+<div class="container">
+
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+		<h3 class="panel-title">Near properties</h3>
+	  </div>
+	  <div class="panel-body">
+		{% for near_property in near %}
+		
+		{% if forloop.counter|divisibleby:2 %}<div class="row">{% else %}{% endif %}
+		
+		
+		<div class="col-md-6">
+			<div class="media-left">
+			  <a href="{% url 'property_detail' near_property.pk %}">
+				<img class="media-object" src="{{ near_property.photo.url }}">
+			  </a>
+			</div>
+			<div class="media-body">
+			  <h4 class="media-heading">{{ near_property.name }}</h4>
+			   {{near_property.description|truncatewords_html:12|safe}}
+			</div>
+	  	</div>
+		{% if forloop.counter|divisibleby:2 %}</div>{% else %}{% endif %}
+		
+		{% empty %}
+		There are no near properties
+		{% endfor %}
+	  </div>
+	</div>
+	
+</div>
+<!-- /.container -->
+
+{% endblock %}
