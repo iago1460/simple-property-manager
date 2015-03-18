@@ -3,6 +3,8 @@
 {% load bootstrap_tags %}
 {% load leaflet_tags %}
 
+{% load leaflet_tags %}
+
 {% block site_heading %}{% trans "Add user" %}{% endblock %}
 
 {% block head %}
@@ -29,7 +31,15 @@
 	<div class="media">
 			<div class="col-xs-6 col-md-3">
 				<a class="thumbnail">
-				<img class="media-object" src="{{ property.photo.url }}" >
+					<!-- Map -->
+					{% leaflet_map "main" callback="main_map_init" %}
+
+					<script type="text/javascript">
+						function main_map_init (map, options) {
+							 L.marker([{{ property.geom.y }}, {{ property.geom.x }}]).addTo(map);
+							 map.setView([{{ property.geom.y }}, {{ property.geom.x }}], 15);
+						}
+					</script>
 				</a>
 			</div>
 			<div class="media-body">

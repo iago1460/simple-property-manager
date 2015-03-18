@@ -2,6 +2,7 @@ from django.contrib.gis.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.templatetags.static import static
 from django.core.urlresolvers import reverse
+from django.utils.text import Truncator
 
 
 
@@ -57,7 +58,7 @@ class Property(models.Model):
           self.get_absolute_url(),
           self.photo.url,
           self.name,
-          self.description
+          Truncator(self.description).words(40, html=True, truncate='...')
         )
 
     geom = models.PointField()

@@ -49,7 +49,7 @@
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top">Property Manager</a>
+                <a href="{% url 'home' %}#top">Property Manager</a>
             </li>
             <li>
             {% if user.is_authenticated %}
