@@ -11,4 +11,4 @@ Simple Property Manager uses [Stylish Portfolio](http://startbootstrap.com/templ
 * Libraries in requirements.txt 
 
 
-This project uses PostgreSQL with PostGIS, PostGIS adds geographic object support to PostgreSQL, turning it into a spatial database. GEOS, PROJ.4 and GDAL should be installed prior to building PostGIS. [Oficial Documentation](https://docs.djangoproject.com/en/1.7/ref/contrib/gis/install/postgis/).
+This project uses PostgreSQL with PostGIS, PostGIS adds geographic object support to PostgreSQL, turning it into a spatial database. GEOS, PROJ.4 and GDAL should be installed prior to building PostGIS. [Official Documentation](https://docs.djangoproject.com/en/1.7/ref/contrib/gis/install/postgis/).
